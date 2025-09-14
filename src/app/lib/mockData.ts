@@ -1,4 +1,4 @@
-const ASSIGNEES = [
+export const ASSIGNEES = [
   { id: 1, name: 'Los', profileColor: 'blue' },
   { id: 2, name: 'Mia', profileColor: 'red' },
   { id: 3, name: 'Jim', profileColor: 'green' },
@@ -6,7 +6,7 @@ const ASSIGNEES = [
   { id: 5, name: 'Max', profileColor: 'purple' }
 ];
 
-const TASKS = [
+export const TASKS = [
   {
     id: 1,
     title: 'Create mobile app wireframes',
