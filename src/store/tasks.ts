@@ -12,6 +12,7 @@ export type Actions = {
   addTask: (task: Task) => void;
   removeTask: (id: number) => void;
   moveTask: (id: number, newStatus: string) => void;
+  updateTask: (updatedTask: Task) => void;
 };
 
 export type TaskStore = State & Actions;
@@ -32,6 +33,12 @@ export const useTasks = create<State & Actions>()(
         set((state) => ({
           tasks: state.tasks.map((task) =>
             task.id === id ? { ...task, status: newStatus } : task
+          )
+        })),
+      updateTask: (updatedTask) =>
+        set((state) => ({
+          tasks: state.tasks.map((task) =>
+            task.id === updatedTask.id ? { ...task, ...updatedTask } : task
           )
         }))
     }),

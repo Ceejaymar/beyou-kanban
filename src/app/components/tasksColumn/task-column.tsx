@@ -12,7 +12,6 @@ type TaskColumn = {
 
 export default function TaskColumn({ column }: TaskColumn) {
   const moveTask = useTasks((state) => state.moveTask);
-  if (!column.tasks.length) return <div>No tasks available</div>;
 
   function handleDrop(e: React.DragEvent<HTMLDivElement>) {
     e.preventDefault();
@@ -27,11 +26,15 @@ export default function TaskColumn({ column }: TaskColumn) {
       onDrop={handleDrop}
     >
       <h2>{column.title}</h2>
-      <div className="flex flex-col gap-3">
-        {column.tasks.map((task) => (
-          <TaskItem task={task} key={task.id} />
-        ))}
-      </div>
+      {!column.tasks.length ? (
+        <div>No tasks available</div>
+      ) : (
+        <div className="flex flex-col gap-3">
+          {column.tasks.map((task) => (
+            <TaskItem task={task} key={task.id} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
