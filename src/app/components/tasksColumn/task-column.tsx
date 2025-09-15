@@ -1,3 +1,4 @@
+import { useTasks } from '@/store/tasks';
 import { Task } from '@/types/types';
 import TaskItem from '../taskItem/task-item';
 
@@ -10,10 +11,21 @@ type TaskColumn = {
 };
 
 export default function TaskColumn({ column }: TaskColumn) {
+  const moveTask = useTasks((state) => state.moveTask);
   if (!column.tasks.length) return <div>No tasks available</div>;
 
+  function handleDrop(e: React.DragEvent<HTMLDivElement>) {
+    e.preventDefault();
+    const taskId = e.dataTransfer.getData('task-id');
+    moveTask(Number(taskId), column.slug);
+  }
+
   return (
-    <div className="border p-4">
+    <div
+      className="border p-4"
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={handleDrop}
+    >
       <h2>{column.title}</h2>
       <div className="flex flex-col gap-3">
         {column.tasks.map((task) => (

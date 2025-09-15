@@ -7,7 +7,12 @@ type TaskItem = {
 
 export default function TaskItem({ task }: TaskItem) {
   return (
-    <Link href={`/task/${task.id}`} className="p-2 border">
+    <Link
+      href={`/task/${task.id}`}
+      className="p-2 border"
+      draggable
+      onDragStart={(e) => e.dataTransfer.setData('task-id', task.id.toString())}
+    >
       {task.title}
     </Link>
   );
