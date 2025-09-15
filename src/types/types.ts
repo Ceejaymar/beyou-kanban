@@ -1,5 +1,11 @@
 export type Status = 'BACKLOG' | 'SCHEDULED' | 'IN_PROGRESS' | 'DONE';
 
+export type Column = {
+  slug: Status;
+  title: string;
+  tasks: Task[];
+};
+
 export type Task = {
   id: number;
   title: string;
