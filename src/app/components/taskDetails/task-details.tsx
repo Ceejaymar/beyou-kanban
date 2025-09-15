@@ -1,6 +1,7 @@
 'use client';
 
 import { v4 as uuid } from 'uuid';
+import { Toaster, toast } from 'sonner';
 
 import { useTasks } from '@/store/tasks';
 
@@ -23,12 +24,18 @@ export default function TaskDetails() {
       assigneeID: formData.get('assigneeID')
     };
 
-    addTask(newTask);
-    form.reset();
+    try {
+      addTask(newTask);
+      form.reset();
+      toast.success(`Task added successfully added to ${newTask.status}`);
+    } catch (error) {
+      toast.error('Failed to add task. Please try again.');
+    }
   }
 
   return (
     <div>
+      <Toaster richColors />
       <form className="flex flex-col gap-4" onSubmit={handleTaskSubmit}>
         add to
         <select name="status" defaultValue="BACKLOG">
@@ -43,6 +50,7 @@ export default function TaskDetails() {
           <option value={5}>Max</option>
         </select>
         <input
+          required
           name="title"
           type="text"
           placeholder="eg. Build pricing component"
