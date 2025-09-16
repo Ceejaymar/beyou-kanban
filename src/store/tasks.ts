@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { TASKS } from '@/lib/mockData';
-import { type Task } from '../types/types';
+import { type Status, type Task } from '../types/types';
 
 export type State = {
   tasks: Task[];
@@ -32,7 +32,7 @@ export const useTasks = create<State & Actions>()(
       moveTask: (id, newStatus) =>
         set((state) => ({
           tasks: state.tasks.map((task) =>
-            task.id === id ? { ...task, status: newStatus } : task
+            task.id === id ? { ...task, status: newStatus as Status } : task
           )
         })),
       updateTask: (updatedTask) =>

@@ -4,7 +4,10 @@ import { ASSIGNEES } from '@/lib/mockData';
 import { Status, type Task } from '@/types/types';
 
 type TaskForm = {
-  onSubmit: (task: Task, form: HTMLFormElement) => void;
+  onSubmit: (
+    task: Omit<Task, 'id' | 'createdDate' | 'tags'>,
+    form: HTMLFormElement
+  ) => void;
   buttonLabel: string;
   defaultValues?: Task;
 };
@@ -26,9 +29,9 @@ export default function TaskForm({
 
     onSubmit(
       {
-        title: formData.get('title'),
-        description: formData.get('description'),
-        status: formData.get('status'),
+        title: formData.get('title') as string,
+        description: formData.get('description') as string,
+        status: formData.get('status') as Status,
         assigneeID: Number(formData.get('assigneeID'))
         // tags: formData.getAll('tags') as string[]
       },
