@@ -17,17 +17,19 @@ export default function TaskItem({ task }: TaskItem) {
       href={`/task/${task.id}`}
       draggable
       onDragStart={(e) => e.dataTransfer.setData('task-id', task.id.toString())}
-      className="relative flex flex-col gap-3 p-4  border border-neutral-300 rounded-lg bg-white"
+      className="relative flex flex-col gap-3 p-4 border border-neutral-300 rounded-lg bg-white"
     >
       <p className="text-neutral-900 font-semibold">{task.title}</p>
-      <div
-        className={`absolute top-4 right-4 text-center font-semibold text-white rounded-full w-6 h-6`}
-        style={{ backgroundColor: assignee!.profileColor }}
-      >
-        {assignee!.name[0]}
-      </div>
       <p className="text-neutral-500 line-clamp-1">{task.description}</p>
-      <p className="self-end text-xs text-neutral-400">{task.createdDate}</p>
+      <div className="flex justify-between items-center">
+        <div
+          className={`text-center font-semibold text-white rounded-full w-6 h-6`}
+          style={{ backgroundColor: assignee!.profileColor }}
+        >
+          {assignee!.name[0]}
+        </div>
+        <p className="self-end text-xs text-neutral-400">{task.createdDate}</p>
+      </div>
     </Link>
   );
 }

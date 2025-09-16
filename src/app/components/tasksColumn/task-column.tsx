@@ -21,7 +21,7 @@ export default function TaskColumn({ column }: TaskColumn) {
 
   return (
     <div
-      className="flex flex-col gap-4 border border-neutral-200 p-4 rounded-xl bg-neutral-100 overflow-hidden h-2/3"
+      className="flex flex-col gap-4 min-w-[330px] border border-neutral-200 h-full p-4 rounded-xl bg-neutral-100 overflow-hidden lg:min-w-auto xl:max-h-5/6"
       onDragOver={(e) => e.preventDefault()}
       onDrop={handleDrop}
     >

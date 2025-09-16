@@ -8,16 +8,14 @@ import NavLink from './components/link/link';
 
 export default function Home() {
   const tasks = useTasks((state) => state.tasks);
-  const addTask = useTasks((state) => state.addTask);
-
   const columnsWithTasks = addTasksToColumn(COLUMNS, tasks);
 
   return (
-    <div className="flex flex-col gap-4 h-full py-20 px-2 w-full max-w-[1280px]">
-      <NavLink href="/task/create" className="self-end cursor-pointer">
+    <div className="flex flex-col gap-4 h-full pl-4 pt-5 pb-4 w-full max-w-[1280px] lg:px-4">
+      <NavLink href="/task/create" className="self-end cursor-pointer pr-4">
         + Create new task
       </NavLink>
-      <div className="font-sans grid grid-cols-3 gap-6 w-full h-full">
+      <div className="font-sans grid grid-flow-col gap-6 h-full overflow-x-auto">
         {columnsWithTasks.map((column) => {
           return <TaskColumn key={column.slug} column={column} />;
         })}

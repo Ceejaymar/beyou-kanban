@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 
 import { useTasks } from '@/store/tasks';
 import TaskForm from '@/app/components/taskForm/task-form';
+import Link from 'next/link';
 
 export default function CreateTaskPage() {
   const { id } = useParams();
@@ -13,10 +14,16 @@ export default function CreateTaskPage() {
 
   const task = tasks.find((task) => task.id === Number(id));
 
-  if (!task) return <p>Task not found</p>;
+  if (!task)
+    return (
+      <p className="mt-10 text-center text-neutral-900">
+        Task not found. <Link href="/task/create">Create a task now.</Link>
+      </p>
+    );
 
   return (
-    <div>
+    <section className="flex flex-col w-full h-full p-4">
+      <h1 className="text-2xl font-bold text-center">Task details</h1>
       <TaskForm
         defaultValues={task}
         onSubmit={(values) => {
@@ -26,6 +33,6 @@ export default function CreateTaskPage() {
         buttonLabel="Update task"
       />
       <Toaster richColors />
-    </div>
+    </section>
   );
 }

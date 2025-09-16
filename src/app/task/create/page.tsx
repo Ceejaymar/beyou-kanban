@@ -10,7 +10,8 @@ export default function CreateTaskPage() {
   const addTask = useTasks((state) => state.addTask);
 
   return (
-    <div>
+    <div className="flex flex-col w-full h-full p-4 xl:max-w-[1280px]">
+      <h1 className="text-2xl font-bold text-center">Create new Task</h1>
       <TaskForm
         onSubmit={(values, form) => {
           addTask({

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Navbar() {
   return (
-    <nav className="flex justify-between w-full max-w-[1280px] p-4">
+    <nav className="flex justify-between items-center w-full max-w-[1280px] p-4">
       <span className="font-bold text-2xl">BeYou Kanban</span>
       <ul className="flex gap-4">
         {[
