@@ -74,3 +74,7 @@ Approximately 6 hours. I didn't want to spend too much time after the timebox of
 - Add animations to the drag and drop feature
 - Spend more time making sure the drag and drop feature works well on mobile. On safari on iOS it's a little wonky because when holding links it opens a preview. So I'd want to prevent that from happening, to be able to drag smoothly.
 - When scrolling the task columns on mobile, I would like to for the columns to snap into place.
+
+## Final Thoughts
+
+I really enjoyed building this. I've always wondered how to set up a kanban, so it was cool making a basic version of one. I'm glad I used Zustand and I'm excited to use it on my personal projects now. There are definitely areas for improvement and some things I missed but overall I'm happy with how it turned out given the time constraint. Thanks for reading!
