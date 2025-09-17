@@ -13,11 +13,9 @@ export default function Home() {
   const [selectedAssigneeID, setSelectedAssigneeID] = useState<number | null>(
     null
   );
-
   const filteredTasks = selectedAssigneeID
     ? tasks.filter((t) => t.assigneeID === selectedAssigneeID)
     : tasks;
-
   const columnsWithTasks = addTasksToColumn(COLUMNS, filteredTasks);
 
   return (
